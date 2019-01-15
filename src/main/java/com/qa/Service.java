@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class Service {
 
-//	private ArrayList<Account> accountList = new ArrayList<Account>();
+
 	HashMap<Integer, Account> accountList = new HashMap<Integer, Account>();
 	
 	
@@ -18,6 +18,8 @@ public class Service {
 					" " +accountList.get(i).getLastName() + " " + accountList.get(i).getAccountNumber());
 			}
 		}
+	
+
 	}
 
 	
