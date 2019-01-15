@@ -1,5 +1,7 @@
 package com.qa;
 
+import com.google.gson.Gson;
+
 public class App {
 
 	public static void main(String[] args) {
@@ -14,5 +16,10 @@ public class App {
 		newService.addAccount(joel);
 		
 		newService.getAccounts();
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(newService.accountList);
+		System.out.println(json);
+				
 	}
 }
