@@ -12,6 +12,9 @@ public class Service {
 	public void addAccount(Account account) {
 		accountList.put(account.getAccountNumber(), account);
 	}
+	
+	
+	
 	public HashMap<Integer, Account> getAccounts() {
 		
 		return accountList;
