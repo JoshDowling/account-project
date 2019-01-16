@@ -1,6 +1,8 @@
-package com.qa;
+package com.qa.service;
 
 import java.util.HashMap;
+
+import com.qa.persistence.domain.Account;
 
 
 public class Service {
@@ -13,9 +15,7 @@ public class Service {
 		accountList.put(account.getAccountNumber(), account);
 	}
 	
-	
-	
-	public HashMap<Integer, Account> getAccounts() {
+		public HashMap<Integer, Account> getAccounts() {
 		
 		return accountList;
 		

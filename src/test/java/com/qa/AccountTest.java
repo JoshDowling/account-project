@@ -5,8 +5,12 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.qa.persistence.domain.Account;
+import com.qa.service.Service;
+
 public class AccountTest {
 
+	
 	Account josh;
 	Account josh1;
 	Account joel;
