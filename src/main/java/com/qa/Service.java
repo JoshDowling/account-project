@@ -18,6 +18,13 @@ public class Service {
 					" " +accountList.get(i).getLastName() + " " + accountList.get(i).getAccountNumber());
 			}
 		}
+	public int searchName(String string) {
+		int counter = 0;
+		
+		
+		
+		return counter;
+	}
 	
 
 	}
