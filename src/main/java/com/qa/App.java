@@ -20,6 +20,7 @@ public class App {
 		Gson gson = new Gson();
 		String json = gson.toJson(newService.accountList);
 		System.out.println(json);
-				
+		
+		System.out.println(newService.searchName("Josh"));
 	}
 }

@@ -28,8 +28,13 @@ public class AccountTest {
 		
 		Service newService = new Service();
 		
-		assertEquals(newService.searchName("josh"), 2);
+		newService.addAccount(josh);
+		newService.addAccount(joel);
+		newService.addAccount(josh1);
+		newService.addAccount(joel1);
 		
+		
+		assertEquals( 2, newService.searchName("Josh"));
 		
 		
 	}

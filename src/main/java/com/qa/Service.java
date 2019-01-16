@@ -20,9 +20,13 @@ public class Service {
 		}
 	public int searchName(String string) {
 		int counter = 0;
-		
-		
-		
+		for(int i = 1; i<accountList.size()+1; i++){
+			
+			if (accountList.get(i).getFirstName().equals(string)) {
+				counter++;
+			}
+		}
+				
 		return counter;
 	}
 	
