@@ -2,15 +2,36 @@ package com.qa;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class AccountTest {
 
+	Account josh;
+	Account josh1;
+	Account joel;
+	Account joel1;
+	Service newService;
+	
+	@Before
+	public void setup() {
+	
+	josh = new Account("Josh", "Dowling", 1);
+	joel = new Account("Joel", "Halford", 2);
+	josh1 = new Account("Josh", "Downing", 3);
+	joel1 = new Account("Joel", "Hall", 4);
+	
+	newService = new Service();
+	
+	newService.addAccount(josh);
+	newService.addAccount(joel);
+	newService.addAccount(josh1);
+	newService.addAccount(joel1);
+	
+	}
+	
 	@Test
 	public void createAccountTest() {
-		
-		Account josh = new Account("Josh", "Dowling", 1);
-		Account joel = new Account("Joel", "Halford", 2);
 		
 		
 		assertEquals(josh.getFirstName(), "Josh");
@@ -21,22 +42,17 @@ public class AccountTest {
 	
 	@Test
 	public void searchNameTest() {
-		Account josh = new Account("Josh", "Dowling", 1);
-		Account joel = new Account("Joel", "Halford", 2);
-		Account josh1 = new Account("Josh", "Downing", 3);
-		Account joel1 = new Account("Joel", "Hall", 4);
-		
-		Service newService = new Service();
-		
-		newService.addAccount(josh);
-		newService.addAccount(joel);
-		newService.addAccount(josh1);
-		newService.addAccount(joel1);
-		
+			
 		
 		assertEquals( 2, newService.searchName("Josh"));
 		
 		
+	}
+	@Test
+	public void getAccountsTest() {
+		
+		
+		assertEquals(newService.getAccounts().size(), 4 );
 	}
 	
 	
