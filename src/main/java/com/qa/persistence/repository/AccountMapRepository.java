@@ -4,8 +4,11 @@ import static javax.transaction.Transactional.TxType.REQUIRED;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
 import java.util.Collection;
+import java.util.HashMap;
 
+import javax.enterprise.inject.Alternative;
 import javax.enterprise.inject.Default;
+import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,34 +19,54 @@ import com.qa.persistence.domain.Account;
 import com.qa.util.JSONUtil;
 
 @Transactional(SUPPORTS)
-@Default
+@Alternative
+@RequestScoped
 public class AccountMapRepository implements AccountRepository {
+	private HashMap<Long, Account> accountList = new HashMap<Long, Account>();
 	
-	@PersistenceContext(unitName = "primary")
-	private EntityManager manager;
 
 	@Inject
 	private JSONUtil util;
 	
 	public String getAllAccounts() {
-		Query query = manager.createQuery("Select a FROM Account a");
-		Collection<Account> accounts = (Collection<Account>) query.getResultList();
-		return util.getJSONForObject(accounts);
-	}
-
-	public String createAccount(String accout) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String updateAccount(Long id, String accountToUpdate) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String deleteAccount(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return util.getJSONForObject(accountList);
 	}
 	
+	@Transactional(REQUIRED)	
+	public String createAccount(String account) {
+		Account newAccount = util.getObjectForJSON(account, Account.class);
+		accountList.put(newAccount.getId(), newAccount);
+				return "{\"message\": \"account has been sucessfully added\"}";
+	}
+	@Transactional(REQUIRED)
+	public String updateAccount(Long id, String accountToUpdate, String toChange) {
+		Account updateAccount = util.getObjectForJSON(accountToUpdate, Account.class);
+		Account accountFromList = accountList.get(id);
+		switch(toChange) {
+			case "firstName": updateAccount.setFirstName(accountToUpdate);;
+				break;
+			case "secondName": updateAccount.setLastName(accountToUpdate);;
+			break;
+
+		}
+	
+		return "{\"message\": \"account has been sucessfully updated\"}";
+	}
+	
+	@Transactional(REQUIRED)
+	public String deleteAccount(Long id) {
+		accountList.remove(id);
+		
+		return "{\"message\": \"account has been sucessfully deleted\"}";
+	}
+//	@Transactional(REQUIRED)
+//	public String deleteAccount(Long id) {
+//		Account accountFromDB = findAccount(id);
+//		if(accountFromDB != null) {
+//			manager.remove(accountFromDB);
+//		}
+//		return "{\"message\": \"account has been sucessfully deleted\"}";
+
+	
+		
 }

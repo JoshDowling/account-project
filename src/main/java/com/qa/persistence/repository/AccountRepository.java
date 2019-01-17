@@ -6,7 +6,7 @@ public interface AccountRepository {
 
 	String createAccount(String accout);
 
-	String updateAccount(Long id, String accountToUpdate);
+	String updateAccount(Long id, String accountToUpdate, String toChange);
 
 	String deleteAccount(Long id);
 
