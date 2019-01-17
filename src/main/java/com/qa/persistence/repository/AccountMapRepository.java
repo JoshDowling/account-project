@@ -18,9 +18,10 @@ import javax.transaction.Transactional;
 import com.qa.persistence.domain.Account;
 import com.qa.util.JSONUtil;
 
-@Transactional(SUPPORTS)
+
 @Alternative
 @RequestScoped
+@Transactional(SUPPORTS)
 public class AccountMapRepository implements AccountRepository {
 	private HashMap<Long, Account> accountList = new HashMap<Long, Account>();
 	
@@ -45,8 +46,8 @@ public class AccountMapRepository implements AccountRepository {
 		switch(toChange) {
 			case "firstName": updateAccount.setFirstName(accountToUpdate);;
 				break;
-			case "secondName": updateAccount.setLastName(accountToUpdate);;
-			break;
+			case "secondName": updateAccount.setSecondName(accountToUpdate);;
+				break;
 
 		}
 	

@@ -32,14 +32,14 @@ public class AccountDBRepository implements AccountRepository {
 		return util.getJSONForObject(result);
 	}
 
-
+	@Override
 	@Transactional(REQUIRED)
 	public String createAccount(String account) {
 		Account anAccount = util.getObjectForJSON(account, Account.class);
 		manager.persist(anAccount);
-		return "{\"message\": \"account has been sucessfully added\"}";
+		return "{\"message\": \"account has been successfully added\"}";
 	}
-
+	@Override
 	@Transactional(REQUIRED)
 	public String updateAccount(Long id, String accountToUpdate, String toChange) {
 		Account updatedAccount = util.getObjectForJSON(accountToUpdate, Account.class);
@@ -48,16 +48,16 @@ public class AccountDBRepository implements AccountRepository {
 			accountFromDB = updatedAccount;
 			manager.merge(accountToUpdate);
 		}
-		return "{\"message\": \"account has ben sucessfully updated\"}";
+		return "{\"message\": \"account has ben successfully updated\"}";
 	}
-
+	@Override
 	@Transactional(REQUIRED)
 	public String deleteAccount(Long id) {
 		Account accountFromDB = findAccount(id);
 		if(accountFromDB != null) {
 			manager.remove(accountFromDB);
 		}
-		return "{\"message\": \"account has been sucessfully deleted\"}";
+		return "{\"message\": \"account has been successfully deleted\"}";
 	}
 	
 	public Account findAccount(Long id) {

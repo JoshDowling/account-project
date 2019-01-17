@@ -15,7 +15,7 @@ public class Account {
 	@Column(length=20)
 	private String firstName;
 	@Column(length=20)
-	private String lastName;
+	private String secondName;
 	@Column(length=20)
 	private int accountNumber;
 	
@@ -26,7 +26,7 @@ public class Account {
 	public Account(String firstName, String lastName, int accountNumber) {
 		super();
 		this.firstName = firstName;
-		this.lastName = lastName;
+		this.secondName = lastName;
 		this.accountNumber = accountNumber;
 	}
 	
@@ -51,13 +51,13 @@ public class Account {
 	}
 
 
-	public String getLastName() {
-		return lastName;
+	public String getSecondName() {
+		return secondName;
 	}
 
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setSecondName(String secondName) {
+		this.secondName = secondName;
 	}
 
 
@@ -69,7 +69,8 @@ public class Account {
 	public void setAccountNumber(int accountNumber) {
 		this.accountNumber = accountNumber;
 	}
-	
+
+
 	
 	
 	
