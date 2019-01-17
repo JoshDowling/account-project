@@ -28,9 +28,7 @@ public class ServiceImpl implements ServiceInterface{
 		Account anAccount = util.getObjectForJSON(account, Account.class);
 		if (anAccount.getAccountNumber()== 9999 ) {
 			return "{\"message\": \"This account is blocked\"}";
-		}
-		
-		return repo.createAccount(account);
+		}else return repo.addAccount(account);
 	}
 
 	public String updateAccount(Long id, String account) {

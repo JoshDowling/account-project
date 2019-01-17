@@ -32,10 +32,11 @@ public class AccountDBRepository implements AccountRepository {
 		return util.getJSONForObject(result);
 	}
 
-	@Override
 	@Transactional(REQUIRED)
-	public String createAccount(String account) {
+	public String addAccount(String account) {
+		
 		Account anAccount = util.getObjectForJSON(account, Account.class);
+		
 		manager.persist(anAccount);
 		return "{\"message\": \"account has been successfully added\"}";
 	}

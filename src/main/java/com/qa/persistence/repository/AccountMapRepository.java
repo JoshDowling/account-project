@@ -34,7 +34,7 @@ public class AccountMapRepository implements AccountRepository {
 	}
 	
 	@Transactional(REQUIRED)	
-	public String createAccount(String account) {
+	public String addAccount(String account) {
 		Account newAccount = util.getObjectForJSON(account, Account.class);
 		accountList.put(newAccount.getId(), newAccount);
 				return "{\"message\": \"account has been sucessfully added\"}";
